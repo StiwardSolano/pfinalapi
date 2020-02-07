@@ -68,7 +68,7 @@ var getWorstRated = [
         , /^Tard/, /^Baja/, /^Nada/, /^No e/, /^injusta/
         , /^Mas din/, /^más din/, /^Más din/, /^Debería/, /^.*\b(Mas din|más din|Más din)\b.*$/
         , /^más tra/, /^Más tra/ , /^.*\b(más tra|Más tra|agrega más)\b.*$/
-        , /^muy comp/, /^.*\b(Muy comp|muy Comp|muy comp)\b.*$/, /^.*?(\bmuy complej 2\b).*$/
+        , /^muy comp/, /^.*\b(Muy comp|muy Comp|muy comp)\b.*$/, /^.*?(\bmuy complej\b).*$/
         , /^No cali/, /^no just/, /^injusto/, /^.*\b(No tiene|no buena manera|no explicar)\b.*$/]} } 
     },
     {$group: 
