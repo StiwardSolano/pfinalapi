@@ -26,7 +26,7 @@ var getTeacherName = [
           }
         }
     },//, '_id coments.description coments.subjectId coments.teachername total'
-    { $match: {"total": {$gte: 5} }}
+    { $match: {"total": {$gte: 4} }}
 ];
 
 var getTopRated = [
