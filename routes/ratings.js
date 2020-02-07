@@ -61,7 +61,7 @@ var getWorstRated = [
         foreignField: '_id', 
         as: 'subjTests' 
         }
-    },{ $match: { "message": {$in: [/^mal/, /^Ma/,/^Pes/,/^Fal/, /^Horr/, /^Tard/, /^Baja/, /^Nada/]} } 
+    },{ $match: { "message": {$in: [/^mal/, /^Ma/,/^Pes/,/^Fal/, /^Horr/, /^Tard/, /^Baja/, /^Nada/, /^No e/]} } 
     },
     {$group: 
         {
