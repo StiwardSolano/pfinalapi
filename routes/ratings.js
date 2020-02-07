@@ -36,7 +36,7 @@ var getTopRated = [
         foreignField: '_id', 
         as: 'subjTests' 
         }
-    },{ $match: { "message": {$in: [/^buen/, /^Bue/, /^Exce/, /^Temp/, /^Chev/, /^Poca/, /^pocos/]} } 
+    },{ $match: { "message": {$in: [/^buen/, /^Bue/, /^Exce/, /^Temp/, /^Chev/, /^Poca/, /^pocos/, /^Bie/, /^bien/]} } 
     },
     {$group: 
         {
