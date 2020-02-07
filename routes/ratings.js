@@ -63,7 +63,7 @@ var getWorstRated = [
         }
     },{ $match: { "message": {$in: [/^mal/, /^Ma/,/^Pes/,/^Fal/, /^Horr/
         , /^Tard/, /^Baja/, /^Nada/, /^No e/
-        , /^Mas din/, /^más din/, /^Más din/]} } 
+        , /^Mas din/, /^más din/, /^Más din/, /^Debería/]} } 
     },
     {$group: 
         {
