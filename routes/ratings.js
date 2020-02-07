@@ -36,7 +36,10 @@ var getTopRated = [
         foreignField: '_id', 
         as: 'subjTests' 
         }
-    },{ $match: { "message": {$in: [/^buen/, /^Bue/, /^Exce/, /^Temp/, /^Chev/, /^Poca/, /^pocos/, /^Bie/, /^bien/]} } 
+    },{ $match: { "message": {$in: [/^buen/, /^Bue/, /^Exce/
+                                    , /^Temp/, /^Chev/, /^Poca/
+                                    , /^pocos/, /^Bie/, /^bien/
+                                    , /^Me gusta/]} } 
     },
     {$group: 
         {
@@ -62,8 +65,10 @@ var getWorstRated = [
         as: 'subjTests' 
         }
     },{ $match: { "message": {$in: [/^mal/, /^Ma/,/^Pes/,/^Fal/, /^Horr/
-        , /^Tard/, /^Baja/, /^Nada/, /^No e/
-        , /^Mas din/, /^más din/, /^Más din/, /^Debería/]} } 
+        , /^Tard/, /^Baja/, /^Nada/, /^No e/, /^injusta/
+        , /^Mas din/, /^más din/, /^Más din/, /^Debería/
+        , /^más tra/, /^Más tra/ , /^ agrega /, /^muy comp/
+        , /^No cali/, /^no just/, /^injusto/, /^No.explicar/]} } 
     },
     {$group: 
         {
