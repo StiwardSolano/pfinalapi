@@ -86,6 +86,37 @@ var getWorstRated = [
         }
     }
 ];
+
+//get comments that with user feedback offering improvements 
+var getRecomended = [
+    {$lookup: { 
+        from: 'subjects', 
+        localField: 'teacherId', 
+        foreignField: '_id', 
+        as: 'subjTests' 
+        }
+    },{ $match: { "message": {$in: [/^pued/, /^Podr/,/^Mej/,/^Fal/,
+        , /^Tard/, /^Baja/, /^Pued/, /^justo/
+        , /^Mas din/, /^más din/, /^Más din/, /^Debería/, /^.*\b(Mas din|más din|Más din)\b.*$/
+        , /^podri/, /^Podr/ , /^.*\b(más tra|Más tra|agrega más)\b.*$/,/más part/
+        , /^(.*?(\bmayor complej\b)[^$]*)$/, /^(.*?(\bcalifica a tiempo\b)[^$]*)$/
+        , /^No califica a/, /^no just/, /^Muy justo/, /^.*\b(Explicar|mejor|explicar)\b.*$/]} } 
+    },
+    {$group: 
+        {
+        _id: "$teacherId",//actualy classID keep in mind
+        total: {$sum: 1},
+        coments: {
+            $push: {
+              message: "$message",
+              description: "$subjTests.description",
+              subjectId: "$subjTests.subjectId",
+              teachername: "$subjTests.teachername"
+            }
+          }
+        }
+    }
+];
 //route to get top 5 most commented teachers -> alltime
 //count total number and sort
 router.route('/toprated').get((req, res) => {
@@ -124,6 +155,16 @@ router.route('/top').get((req, res) => {
 //negative feedback based on regex
 router.route('/worst').get((req, res) => {
     Comment.aggregate(getWorstRated)
+    .sort({total: 'desc'})
+    .limit(5)
+    .then(subjects => res.json(subjects))
+    .catch(err => res.status(400).json('Error: ' + err));
+    console.log(res);
+});
+
+//route to get feedback offering improvements 
+router.route('/reco').get((req, res) => {
+    Comment.aggregate(getRecomended)
     .sort({total: 'desc'})
     .limit(5)
     .then(subjects => res.json(subjects))
